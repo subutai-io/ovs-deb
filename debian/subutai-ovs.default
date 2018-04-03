@@ -1,0 +1,8 @@
+# Defaults for subutai-ovs initscript
+# sourced by /etc/init.d/subutai-ovs
+# installed at /etc/default/subutai-ovs by the maintainer scripts
+
+SUBUTAI_SWITCH="lxc-br"
+SUBUTAI_IP="10.10.10.254"
+SUBUTAI_DHCP_RANGE="10.10.10.10,10.10.10.240,12h"
+

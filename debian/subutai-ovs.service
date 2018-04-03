@@ -1,0 +1,12 @@
+[Unit]
+Description=Subutai OVS Startup
+After=openvswitch-switch.service
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/default/subutai-ovs
+ExecStart=/usr/sbin/subutai-ovs
+
+[Install]
+WantedBy=multi-user.target
+Alias=subutai-ovs.service
