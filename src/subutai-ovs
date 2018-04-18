@@ -3,11 +3,25 @@
 # Create lxc-br for subutai
 #
 
+LOG="logger -t subutai-ovs -p local0.debug "
+
+$LOG "starting"
+
 [ -d /var/spool/subutai ] || mkdir /var/spool/subutai
 
+$LOG "checking if ${SUBUTAI_SWITCH} exists"
 ovs-vsctl show | grep ${SUBUTAI_SWITCH} >/dev/null || (
 
+	$LOG "did not - creating ${SUBUTAI_SWITCH}"
+
 	ovs-vsctl add-br ${SUBUTAI_SWITCH}
+
+)
+
+$LOG "checking if ${SUBUTAI_SWITCH} is up"
+ip link list | grep ${SUBUTAI_SWITCH} | grep "UP" >/dev/null || (
+
+	$LOG "it was not - setting ${SUBUTAI_SWITCH} to up"
 	ip link set ${SUBUTAI_SWITCH} up
 
 )
@@ -18,7 +32,16 @@ ip addr show | grep ${SUBUTAI_IP} >/dev/null || (
 
 )
 
-dnsmasq -k -p 0 --interface=${SUBUTAI_SWITCH} --dhcp-range=${SUBUTAI_DHCP_RANGE} --dhcp-leasefile=/var/spool/subutai/dnsmasq.leases --dhcp-option=6,${SUBUTAI_IP} &
+$LOG "Ensure IP forwarding is enabled"
+echo 1 >/proc/sys/net/ipv4/ip_forward
+
+$LOG "Redirect DNS traffic to port 5353"
+iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --dport 53 -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_DNS_PORT}
+
+$LOG "Masquerading outgoing traffic"
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+dnsmasq -q -p ${SUBUTAI_DNS_PORT} --interface=${SUBUTAI_SWITCH} --dhcp-range=${SUBUTAI_DHCP_RANGE} --dhcp-leasefile=/var/spool/subutai/dnsmasq.leases --dhcp-option=6,${SUBUTAI_IP} 
 
 exit 0
 

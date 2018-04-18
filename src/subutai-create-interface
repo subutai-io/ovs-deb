@@ -2,8 +2,14 @@
 
 . /etc/default/subutai-ovs
 
+LOG="logger -t subutai-create-interface -p local0.debug "
+
+$LOG "Running for $1"
+
 vlan="$(grep '#vlan_id' ${SUBUTAI_LXC}/$1/config | awk '{print $3}')"
 gateway="$(grep 'lxc.network.ipv4.gateway' ${SUBUTAI_LXC}/$1/config | awk '{print $3}')"
+
+$LOG "vlan = $vlan"
 
 if [ "$vlan" ]; then
         ovs-vsctl --may-exist add-br gw-$vlan
