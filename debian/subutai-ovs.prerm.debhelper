@@ -1,6 +1,11 @@
 # Automatically added by dh_systemd_start
 if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
-	deb-systemd-invoke stop subutai-ovs.service >/dev/null
+	deb-systemd-invoke stop subutai-dnsmasq.service subutai-ovs.service >/dev/null
+fi
+# End automatically added section
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/subutai-dnsmasq" ] && [ "$1" = remove ]; then
+	invoke-rc.d subutai-dnsmasq stop || exit $?
 fi
 # End automatically added section
 # Automatically added by dh_installinit

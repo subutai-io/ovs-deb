@@ -17,6 +17,10 @@
 %:
 	dh $@ --with=systemd
 
+override_dh_installinit:
+	dh_installinit --name=subutai-ovs
+	dh_installinit --name=subutai-dnsmasq
+
 
 # dh_make generated override targets
 # This is example for Cmake (See https://bugs.debian.org/641051 )

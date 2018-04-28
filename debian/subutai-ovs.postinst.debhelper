@@ -26,6 +26,19 @@ if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
 	fi
 fi
 # End automatically added section
+# Automatically added by dh_installinit
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+	if [ -x "/etc/init.d/subutai-dnsmasq" ]; then
+		update-rc.d subutai-dnsmasq defaults >/dev/null
+		if [ -n "$2" ]; then
+			_dh_action=restart
+		else
+			_dh_action=start
+		fi
+		invoke-rc.d subutai-dnsmasq $_dh_action || exit $?
+	fi
+fi
+# End automatically added section
 # Automatically added by dh_systemd_start
 if [ -d /run/systemd/system ]; then
 	systemctl --system daemon-reload >/dev/null || true
@@ -34,6 +47,6 @@ if [ -d /run/systemd/system ]; then
 	else
 		_dh_action=start
 	fi
-	deb-systemd-invoke $_dh_action subutai-ovs.service >/dev/null || true
+	deb-systemd-invoke $_dh_action subutai-dnsmasq.service subutai-ovs.service >/dev/null || true
 fi
 # End automatically added section
