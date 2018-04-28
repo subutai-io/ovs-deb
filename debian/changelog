@@ -1,6 +1,6 @@
 subutai-ovs (0.0.3) unstable; urgency=medium
 
-  * Separate dnsmask systemd unit
+  * Separate dnsmasq systemd unit
 
  -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
 
