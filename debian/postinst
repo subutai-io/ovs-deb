@@ -1,0 +1,3 @@
+#!/bin/bash
+systemctl enable subutai-dnsmasq.service
+systemctl start subutai-dnsmasq.service

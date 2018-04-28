@@ -1,6 +1,27 @@
+subutai-ovs (0.0.6+dev.3) unstable; urgency=medium
+
+  * Including "branch" in version number
+  * Creating folders
+  * Reintroduced postinst
+  
+ -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
+
+subutai-ovs (0.0.5) unstable; urgency=medium
+
+  * Removed postinst
+  
+ -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
+
+subutai-ovs (0.0.4) unstable; urgency=medium
+
+  * Releasing
+  
+ -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
+
 subutai-ovs (0.0.3) unstable; urgency=medium
 
   * Separate dnsmasq systemd unit
+  * Ugly temporary hack to make dns work
 
  -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
 

@@ -36,7 +36,7 @@ $LOG "Ensure IP forwarding is enabled"
 echo 1 >/proc/sys/net/ipv4/ip_forward
 
 $LOG "Redirect DNS and DHCP traffic"
-iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --dport 53 -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_DNS_PORT}
+#iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --dport 53 -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_DNS_PORT}
 #iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --sport bootps -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_BOOTPS_PORT}
 #iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --sport bootpc -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_BOOTPC_PORT}
 
