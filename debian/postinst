@@ -1,0 +1,11 @@
+#!/bin/sh
+# POSTINST script for subutai-ovs
+
+systemctl disable dnsmasq.service
+systemctl stop dnsmasq.service
+systemctl enable subutai-dnsmasq.service
+systemctl start subutai-dnsmasq.service
+systemctl enable subutai-ovs.service
+systemctl start subutai-ovs.service
+
+exit 0
