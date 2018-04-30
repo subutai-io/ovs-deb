@@ -1,8 +1,8 @@
-subutai-ovs (0.0.6+dev.3) unstable; urgency=medium
+subutai-ovs (0.0.6+dev.6) unstable; urgency=medium
 
   * Including "branch" in version number
   * Creating folders
-  * Reintroduced postinst
+  * Fixed subutai-dnsmasq unit
   
  -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
 
