@@ -1,4 +1,10 @@
-subutai-ovs (0.0.6+master.8) testing; urgency=medium
+subutai-ovs (7.0.0+master.1) testing; urgency=medium
+
+  * Bumped version 
+
+ -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
+
+subutai-ovs (0.0.6+dev.8) unstable; urgency=medium
 
   * Including "branch" in version number
   * Creating folders
