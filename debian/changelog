@@ -1,4 +1,4 @@
-subutai-ovs (0.0.6+master.8) testing; urgency=medium
+subutai-ovs (0.0.6+prod.8) stable; urgency=medium
 
   * Including "branch" in version number
   * Creating folders
