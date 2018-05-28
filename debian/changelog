@@ -1,4 +1,4 @@
-subutai-ovs (7.0.1) master; urgency=medium
+subutai-ovs (7.0.1+master.1) testing; urgency=medium
 
   * Removed logging
 
