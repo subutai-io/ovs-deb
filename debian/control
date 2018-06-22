@@ -10,6 +10,6 @@ Homepage: https://subutai.io
 
 Package: subutai-ovs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, openvswitch-switch, dnsmasq
+Depends: ${shlibs:Depends}, ${misc:Depends}, openvswitch-switch, dnsmasq, lsof
 Description: Initialize and run openvswitch for Subutai
  This package will configure and run openvswitch for Subutai
