@@ -1,5 +1,5 @@
 Source: subutai-ovs
-Section: unknown
+Section: utils
 Priority: optional
 Maintainer: Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>
 Build-Depends: debhelper (>= 10)
