@@ -1,2 +1,0 @@
-override_dh_installinit dh_installinit
-override_dh_installinit dh_installinit

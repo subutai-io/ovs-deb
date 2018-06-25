@@ -1,10 +1,4 @@
-subutai-ovs (7.0.1+dev.1) unstable; urgency=medium
-
-  * Removed logging
-
- -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Wed, 18 Apr 2018 11:27:02 +0800
-
-subutai-ovs (7.0.0+dev.1) unstable; urgency=medium
+subutai-ovs (7.0.0+master.1) testing; urgency=medium
 
   * Bumped version 
 

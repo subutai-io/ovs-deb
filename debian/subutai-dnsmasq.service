@@ -1,11 +1,10 @@
 [Unit]
-Description=Subutai OVS Startup
+Description=Subutai Dnsmasq Startup
 After=subutai-ovs.service
 
 [Service]
-Type=forking
 EnvironmentFile=-/etc/default/subutai-ovs
-ExecStart=/bin/bash -c "dnsmasq --dhcp-range=${SUBUTAI_DHCP_RANGE} --dhcp-leasefile=/var/spool/subutai/dnsmasq.leases --dhcp-option=6,${SUBUTAI_IP}"
+ExecStart=/usr/sbin/subutai-dnsmasq ${SUBUTAI_DHCP_RANGE} ${SUBUTAI_IP}
 
 [Install]
 WantedBy=multi-user.target
