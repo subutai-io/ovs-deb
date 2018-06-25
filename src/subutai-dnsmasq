@@ -1,0 +1,23 @@
+#!/bin/sh
+
+DHCP_RANGE=$1
+IP_ADDR=$2
+
+OPTIONS="-q -k --dhcp-range=${DHCP_RANGE} --dhcp-leasefile=/var/spool/subutai/dnsmasq.leases --dhcp-option=6,${IP_ADDR}"
+
+#if $(systemctl is-active --quiet bind9.service); then
+#    BIND=1;
+#fi
+#if $(systemctl is-active --quiet dnsmasq.service); then
+#    DNSMASQ=1;
+#fi
+if $(lsof -ni :domain|grep '*:domain'>/dev/null 2>&1); then
+    LSOF=1;
+fi
+
+if [ -n "$BIND" ] || [ -n "$DNSMASQ" ] || [ -n "$LSOF" ]; then
+    echo "Detected another DNS service, this instance will serve DHCP only"
+    OPTIONS=$OPTIONS" -p0"
+fi
+
+exec dnsmasq $OPTIONS
