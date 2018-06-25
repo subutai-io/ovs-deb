@@ -49,11 +49,11 @@ try {
 		notifyBuildDetails = "\nFailed on Stage - Version tweaks"
 		sh """
                         cd ${CWD}/ovs-deb || exit 1
-                        export ovs-deb_version=\$(git describe --abbrev=0 --tags)+\$(date +%Y%m%d%H%M%S0)
+                        export ovs_version=\$(git describe --abbrev=0 --tags)+\$(date +%Y%m%d%H%M%S0)
 			echo "VERSION is \$ovs-deb_version"
 
 			cd ${CWD}/ovs-deb && sed -i 's/quilt/native/' debian/source/format
-			dch -v "\$ovs-deb_version" -D stable "Test build for \$ovs-deb_version" 1>/dev/null 2>/dev/null
+			dch -v "\$ovs_version" -D stable "Test build for \$ovs_version" 1>/dev/null 2>/dev/null
 		"""
 
 		stage("Build subutai-ovs package")
