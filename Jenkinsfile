@@ -50,7 +50,7 @@ try {
 		sh """
                         cd ${CWD}/ovs-deb || exit 1
                         export ovs_version=\$(git describe --abbrev=0 --tags)+\$(date +%Y%m%d%H%M%S0)
-			echo "VERSION is \$ovs-deb_version"
+			echo "VERSION is \$ovs_version"
 
 			cd ${CWD}/ovs-deb && sed -i 's/quilt/native/' debian/source/format
 			dch -v "\$ovs_version" -D stable "Test build for \$ovs_version" 1>/dev/null 2>/dev/null
