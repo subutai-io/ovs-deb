@@ -60,7 +60,7 @@ try {
 		notifyBuildDetails = "\nFailed on Stage - Build package"
 		sh """
 			cd ${CWD}/ovs-deb
-			dpkg-buildpackage -rfakeroot
+			dpkg-buildpackage -rfakeroot -us -uc
 
 			cd ${CWD} || exit 1
 			for i in *.deb; do
@@ -74,8 +74,8 @@ try {
 		sh """
 			cd ${CWD}
 			touch uploading_ovs
-			scp uploading_ovs subutai*.deb dak@deb.subutai.io:incoming/${release}/
-			ssh dak@deb.subutai.io sh /var/reprepro/scripts/scan-incoming.sh ${release} ovs
+			scp uploading_ovs subutai*.deb dak@debup.subutai.io:incoming/${release}/
+			ssh dak@debup.subutai.io sh /var/reprepro/scripts/scan-incoming.sh ${release} ovs
 		"""
 	}
 
