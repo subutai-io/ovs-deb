@@ -5,6 +5,7 @@ After=subutai-ovs.service
 [Service]
 EnvironmentFile=-/etc/default/subutai-ovs
 ExecStart=/usr/sbin/subutai-dnsmasq ${SUBUTAI_DHCP_RANGE} ${SUBUTAI_IP}
+OnFailure=subutai-cop.service
 
 [Install]
 WantedBy=multi-user.target
