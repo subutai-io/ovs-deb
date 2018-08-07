@@ -7,6 +7,7 @@ Type=oneshot
 EnvironmentFile=-/etc/default/subutai-ovs
 ExecStart=/usr/sbin/subutai-ovs
 RemainAfterExit=yes
+OnFailure=subutai-cop.service
 
 [Install]
 WantedBy=multi-user.target
