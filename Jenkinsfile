@@ -14,24 +14,7 @@ try {
 				
 		String date = new Date().format( 'yyyyMMddHHMMSS' )
 		def CWD = pwd()
-
-                switch (env.BRANCH_NAME) {
-                    case ~/master/: 
-                        cdnHost = "mastercdn.subutai.io"; 
-                        break;
-                    case ~/dev/: 
-                        cdnHost = "devcdn.subutai.io"; 
-                        break;
-                    case ~/no-snap/: 
-                        cdnHost = "devcdn.subutai.io"; 
-                        break;
-                    case ~/sysnet/: 
-                        cdnHost = "sysnetcdn.subutai.io"; 
-                        break;
-                    default: 
-                        cdnHost = "cdn.subutai.io"; 
-                }
-                def release = env.BRANCH_NAME
+    def release = env.BRANCH_NAME
 
 		sh """
 			#set +x
