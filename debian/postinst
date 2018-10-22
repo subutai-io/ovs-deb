@@ -1,6 +1,8 @@
 #!/bin/sh
 # POSTINST script for subutai-ovs
 
+systemctl disable lxc-net.service
+systemctl stop lxc-net.service
 systemctl disable dnsmasq.service
 systemctl stop dnsmasq.service
 systemctl enable subutai-dnsmasq.service
