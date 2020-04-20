@@ -1,3 +1,9 @@
+subutai-ovs (8.0.0+dev.1) UNRELEASED; urgency=medium
+
+  * Updated to LXC 3.x
+
+ -- Lars Boegild Thomsen <lbthomsen@optimal-dynamics.com>  Mon, 20 Apr 2020 09:04:54 +0800
+
 subutai-ovs (7.0.0+master.1) testing; urgency=medium
 
   * Bumped version 

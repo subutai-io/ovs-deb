@@ -5,7 +5,7 @@
 
 LOG="logger -t subutai-ovs -p local0.debug "
 
-$LOG "starting"
+$LOG "subutai-ovs starting"
 
 [ -d /var/spool/subutai ] || mkdir /var/spool/subutai
 
@@ -35,18 +35,8 @@ ip addr show | grep ${SUBUTAI_IP} >/dev/null || (
 $LOG "Ensure IP forwarding is enabled"
 echo 1 >/proc/sys/net/ipv4/ip_forward
 
-$LOG "Redirect DNS and DHCP traffic"
-#iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --dport 53 -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_DNS_PORT}
-#iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --sport bootps -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_BOOTPS_PORT}
-#iptables -t nat -A PREROUTING -d ${SUBUTAI_IP} -p udp --sport bootpc -j DNAT --to-destination ${SUBUTAI_IP}:${SUBUTAI_BOOTPC_PORT}
-
 $LOG "Masquerading outgoing traffic"
 iptables -t nat -A POSTROUTING -j MASQUERADE
-
-#dnsmasq -q --port ${SUBUTAI_DNS_PORT} --dhcp-alternate-port=${SUBUTAI_BOOTPS_PORT},${SUBUTAI_BOOTPC_PORT} --interface=${SUBUTAI_SWITCH} --dhcp-range=${SUBUTAI_DHCP_RANGE} --dhcp-leasefile=/var/spool/subutai/dnsmasq.leases --dhcp-option=6,${SUBUTAI_IP} 
-
-$LOG "Starting dnsmasq"
-
 
 exit 0
 
